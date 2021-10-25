@@ -1,3 +1,4 @@
+using revghost.Shared.Threading;
 using revtask.Core;
 using revtask.Core.Internal;
 
@@ -108,9 +109,8 @@ public partial class OpportunistJobRunner
 
             batches.ResultSynchronization.Lock();
             ref var result = ref _owner._batches.Results[request.Id];
-            Interlocked.Increment(ref result.SuccessfulWrite);
 
-            if (result.IsCompleted)
+            if (Interlocked.Increment(ref result.SuccessfulWrite) >= result.MaxIndex)
             {
                 batches.SetUnused(request.Id);
             }

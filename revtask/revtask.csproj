@@ -5,6 +5,16 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
+        <PackageVersion>2021.10.25.2340</PackageVersion>
+        <Copyright>guerro323</Copyright>
+        <PackageProjectUrl>https://github.com/guerro323/GameHost</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/guerro323/GameHost/blob/v3-dev/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/guerro323/GameHost</RepositoryUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="revghost.Shared" Version="2021.10.25.2331" />
+    </ItemGroup>
 
 </Project>

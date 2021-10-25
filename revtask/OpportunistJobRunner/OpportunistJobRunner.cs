@@ -1,5 +1,7 @@
 using System.Collections.Concurrent;
 using System.Runtime.CompilerServices;
+using revghost.Shared.Collections;
+using revghost.Shared.Threading;
 using revtask.Core;
 using revtask.Core.Internal;
 
@@ -16,7 +18,7 @@ public partial class OpportunistJobRunner : IJobRunner, IDisposable
     public OpportunistJobRunner(float corePercentile)
     {
         _batches = new BatchCollection(this);
-        
+
         var coreCount = Math.Clamp((int) (Environment.ProcessorCount * corePercentile), 1,
             Environment.ProcessorCount);
 
@@ -28,12 +30,8 @@ public partial class OpportunistJobRunner : IJobRunner, IDisposable
             _tasks[i].Start(_taskStates[i] = new TaskState()
             {
                 Runner = this,
-
                 ProcessorId = -1,
-
-                Token = _ccs.Token,
                 TaskIndex = i,
-                TaskCount = _tasks.Length,
                 Batches = _batches
             });
         }
@@ -278,20 +276,9 @@ public partial class OpportunistJobRunner : IJobRunner, IDisposable
         public bool IsPerformanceCritical;
         public int ProcessorId;
         public OpportunistJobRunner Runner;
-        public int TaskCount;
         public int TaskIndex;
-
-        public CancellationToken Token;
     }
 
-    private record struct ScheduledBatch(Type Type)
-    {
-        public void Invoke()
-        {
-            
-        }
-    }
-    
     private struct BatchResult
     {
         public int SuccessfulWrite;
