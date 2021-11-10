@@ -10,7 +10,6 @@
         <PackageProjectUrl>https://github.com/guerro323/GameHost</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/guerro323/GameHost/blob/v3-dev/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/guerro323/GameHost</RepositoryUrl>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
