@@ -13,7 +13,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="revghost.Shared" Version="2021.10.25.2331" />
+      <PackageReference Include="revghost.Shared" Version="2021.10.25.2331">
+          <SpecificVersion>False</SpecificVersion>
+      </PackageReference>
     </ItemGroup>
 
 </Project>
