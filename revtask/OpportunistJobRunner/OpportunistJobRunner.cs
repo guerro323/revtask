@@ -143,7 +143,7 @@ public partial class OpportunistJobRunner : IJobRunner, IDisposable
         {
             ResultSynchronization.Lock();
             _batchRows.TrySetUnusedRow(id);
-            ResultSynchronization.Unlock();
+            ResultSynchronization.Unlock(true);
         }
 
         public JobRequest Enqueue<T>(T batch, int count)

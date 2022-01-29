@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
-        <PackageVersion>2021.10.25.2340</PackageVersion>
+        <PackageVersion>2022.01.29.1945</PackageVersion>
         <Copyright>guerro323</Copyright>
         <PackageProjectUrl>https://github.com/guerro323/GameHost</PackageProjectUrl>
         <PackageLicenseUrl>https://github.com/guerro323/GameHost/blob/v3-dev/LICENSE</PackageLicenseUrl>
@@ -13,7 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="revghost.Shared" Version="2021.10.25.2331">
+      <PackageReference Include="revghost.Shared" Version="2022.126.1743">
           <SpecificVersion>False</SpecificVersion>
       </PackageReference>
     </ItemGroup>

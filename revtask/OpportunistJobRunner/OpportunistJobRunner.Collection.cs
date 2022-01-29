@@ -23,7 +23,7 @@ public partial class OpportunistJobRunner
                 Array.Resize(ref _queuedBatchesMap, _owner._batches.Versions.Length);
             }
 
-            _dictionarySynchronizer.Unlock();
+            _dictionarySynchronizer.Unlock(true);
 
             _queuedBatchesMap[request.Id] = batch;
         }
@@ -115,7 +115,7 @@ public partial class OpportunistJobRunner
                 batches.SetUnused(request.Id);
             }
 
-            batches.ResultSynchronization.Unlock();
+            batches.ResultSynchronization.Unlock(true);
 
             return true;
         }
