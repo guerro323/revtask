@@ -72,7 +72,7 @@ public static class BatchRunnerExtensions
 
         // We are forced to diverge on another thread...
         // this will alloc.
-        ThreadPool.QueueUserWorkItem((arg) =>
+        ThreadPool.QueueUserWorkItem(static arg =>
         {
             // If it's not completed, then it can mean that it need to wait up on other tasks.
             // and if all threads are busy with diverging tasks, then it would result into a deadlock.
@@ -87,7 +87,7 @@ public static class BatchRunnerExtensions
             // which call A, and then will never complete because B is waiting for C.
 
             var threadWait = new SpinWait();
-            while (!runner.IsCancelled() && !runner.IsCompleted(arg.request))
+            while (!arg.runner.IsCancelled() && !arg.runner.IsCompleted(arg.request))
             {
                 arg.runner.TryDiverge();
                 threadWait.SpinOnce();
